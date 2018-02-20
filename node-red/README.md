@@ -170,3 +170,7 @@ A: The builtin nodes can be updated by manually force hassio to rebuild the imag
 ### 0.1.8 (2018-02-16)
 #### Added
 - Added support for [Node-RED Projects](https://nodered.org/docs/user-guide/projects/) in Node-RED v0.18.x
+
+### 0.1.9 (2018-02-20)
+#### Changed
+- Upgrade node during build to address compatibility issue with node-red-contrib-home-assistant 0.3.0

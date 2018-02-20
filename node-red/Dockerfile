@@ -5,8 +5,14 @@ WORKDIR /usr/src/node-red
 
 USER root
 
-RUN apt-get update && apt-get install -y jq && \
+RUN apt-get update && \
+    apt-get install -y jq && \
     npm install -g node-red-admin
+
+# Upgrade node to workaround issue with node-red-contrib-home-assistant 0.3.0. Remove workaround once base image (nodered/node-red-docker) has compatible version of node.
+RUN npm cache clean -f && \
+    npm install -g n && \
+    n stable
 
 # Expose tcp/1880
 EXPOSE 1880
