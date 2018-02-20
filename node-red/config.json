@@ -1,6 +1,6 @@
 {
   "name": "Node-RED",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/node-red",
@@ -17,6 +17,7 @@
   "boot": "auto",
   "host_network": true,
   "homeassistant_api": true,
+  "auto_uart": true,
   "options": {
     "ssl": false,
     "certfile": "fullchain.pem",

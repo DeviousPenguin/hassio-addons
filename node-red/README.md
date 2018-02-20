@@ -174,3 +174,7 @@ A: The builtin nodes can be updated by manually force hassio to rebuild the imag
 ### 0.1.9 (2018-02-20)
 #### Changed
 - Upgrade node during build to address compatibility issue with node-red-contrib-home-assistant 0.3.0
+
+### 0.1.10 (2018-02-20)
+#### Added
+- Added auto_uart permission which allows Node-RED nodes to access serial devices such as node-red-contrib-rfxcom.
