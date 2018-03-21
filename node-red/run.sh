@@ -34,8 +34,8 @@ if [ "$SSL" == "true" ]; then
   echo "[INFO] Enabling SSL"
   sed -i 's/.*var fs = require("fs")/var fs = require("fs")/g' $SETTINGS_JS
   sed -i '/https: {/,/}/ s/\/\///' $SETTINGS_JS
-  sed -i "s/.*key: fs.readFileSync('.*'),/        key: fs.readFileSync(\'\/ssl\/$KEYFILE\'),/g" $SETTINGS_JS
-  sed -i "s/.*cert: fs.readFileSync('.*')/        cert: fs.readFileSync(\'\/ssl\/$CERTFILE\')/g" $SETTINGS_JS
+  sed -i "s/.*key: fs.readFileSync('.*'),/        key: fs.readFileSync(\'\/ssl\/${KEYFILE//\//\\/}\'),/g" $SETTINGS_JS
+  sed -i "s/.*cert: fs.readFileSync('.*')/        cert: fs.readFileSync(\'\/ssl\/${CERTFILE//\//\\/}\')/g" $SETTINGS_JS
 else
   echo "[INFO] Disabling SSL"
   sed -i 's/.*var fs = require("fs")/\/\/var fs = require("fs")/g' $SETTINGS_JS

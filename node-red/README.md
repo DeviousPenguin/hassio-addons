@@ -178,3 +178,7 @@ A: The builtin nodes can be updated by manually force hassio to rebuild the imag
 ### 0.1.10 (2018-02-20)
 #### Added
 - Added auto_uart permission which allows Node-RED nodes to access serial devices such as node-red-contrib-rfxcom.
+
+### 0.1.11 (2018-03-21)
+#### Changed
+- Fixed how path to certs are escaped.
