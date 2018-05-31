@@ -1,6 +1,6 @@
 {
   "name": "Node-RED",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "slug": "nodered",
   "description": "Node-RED - (https://nodered.org/)",
   "url": "https://github.com/notoriousbdg/hassio-addons/tree/master/node-red",
@@ -35,7 +35,12 @@
         "password": "password"
       }
     ],
-    "projects": false
+    "projects": false,
+    "install_packages": [],
+    "install_nodes": [
+      "node-red-contrib-home-assistant"
+    ],
+    "uninstall_nodes": []
   },
   "schema": {
     "ssl": "bool",
@@ -54,6 +59,15 @@
         "password": "str"
       }
     ],
-    "projects": "bool"
+    "projects": "bool",
+    "install_packages": [
+      "str"
+    ],
+    "install_nodes": [
+      "str"
+    ],
+    "uninstall_nodes": [
+      "str"
+    ]
   }
 }

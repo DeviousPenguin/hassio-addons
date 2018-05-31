@@ -8,6 +8,9 @@ CERTFILE=$(jq --raw-output ".certfile" $CONFIG_PATH)
 USER_COUNT=$(jq --raw-output ".users | length" $CONFIG_PATH)
 HTTP_NODE_USER_COUNT=$(jq --raw-output ".http_node_user | length" $CONFIG_PATH)
 PROJECTS=$(jq --raw-output ".projects" $CONFIG_PATH)
+INSTALL_PACKAGES=$(jq --raw-output ".install_packages[] // empty" $CONFIG_PATH)
+INSTALL_NODE=$(jq --raw-output ".install_nodes[] // empty" $CONFIG_PATH)
+UNINSTALL_NODE=$(jq --raw-output ".uninstall_nodes[] // empty" $CONFIG_PATH)
 
 # Create /share/node-red folder
 if [ ! -d /share/node-red ]; then
@@ -58,7 +61,7 @@ else
   for (( i=0; i < "$USER_COUNT"; i++ )); do
     USERNAME=$(jq --raw-output ".users[$i].username" $CONFIG_PATH)
     PASSWORD=$(jq --raw-output ".users[$i].password" $CONFIG_PATH)
-    HASH=$(echo $PASSWORD | node-red-admin hash-pw | cut -d " " -f 2)
+    HASH=$(node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" $PASSWORD)
     PERMISSIONS=$(jq --raw-output ".users[$i].permissions" $CONFIG_PATH)
     if [ "$i" != "0" ]; then
       echo "                ," >> $SETTINGS_JS.new
@@ -89,7 +92,7 @@ else
   echo "[INFO] Updating HTTP Node User"
   USERNAME=$(jq --raw-output ".http_node_user[0].username" $CONFIG_PATH)
   PASSWORD=$(jq --raw-output ".http_node_user[0].password" $CONFIG_PATH)
-  HASH=$(echo $PASSWORD | node-red-admin hash-pw | cut -d " " -f 2)
+  HASH=$(node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 8));" $PASSWORD)
   echo "[INFO] Adding HTTP Node User $USERNAME"
   sed '/httpNodeAuth:/Q' $SETTINGS_JS > $SETTINGS_JS.new
   echo "    httpNodeAuth: {user:\"$USERNAME\",pass:\"$HASH\"}," >> $SETTINGS_JS.new
@@ -115,6 +118,33 @@ if [ "$PROJECTS" == "true" ]; then
 else
   echo "[INFO] Disabling Projects"
   sed -i '/^[ ]*editorTheme: {/,/},/ s/^[ ]*/    \/\//' $SETTINGS_JS
+fi
+
+if [ ! -z "$INSTALL_PACKAGES" ]; then
+    echo "[INFO] Attempting to install packages: $INSTALL_PACKAGES"
+    apt-get update
+    if ! ERROR="$(apt-get install -y $INSTALL_PACKAGES)"; then
+        echo "[ERROR] Can't install packages!"
+        echo "$ERROR" && exit 1
+    fi
+fi
+
+if [ ! -z "$UNINSTALL_NODE" ]; then
+    echo "[INFO] Attempting to uninstall nodes: $UNINSTALL_NODE"
+    cd /share/node-red
+    if ! ERROR="$(npm uninstall $UNINSTALL_NODE)"; then
+        echo "[ERROR] Can't uninstall nodes!"
+        echo "$ERROR" && exit 1
+    fi
+fi
+
+if [ ! -z "$INSTALL_NODE" ]; then
+    echo "[INFO] Attempting to install/update nodes: $INSTALL_NODE"
+    cd /share/node-red
+    if ! ERROR="$(npm install $INSTALL_NODE)"; then
+        echo "[ERROR] Can't install nodes!"
+        echo "$ERROR" && exit 1
+    fi
 fi
 
 # Startup
