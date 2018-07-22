@@ -1,4 +1,4 @@
-# Gogs Hass.io Add-On
+# Gogs Hass.io Add-On (Deprecated)
 ---------
 
 [Hass.io](https://home-assistant.io/hassio/) add-on for [Gogs](https://gogs.io/).  Gogs is a painless self-hosted Git service.

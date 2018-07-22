@@ -1,4 +1,4 @@
-# HA Bridge Hass.io Add-On
+# HA Bridge Hass.io Add-On (Deprecated)
 ---------
 
 [Hass.io](https://home-assistant.io/hassio/) add-on for [HA Bridge](https://github.com/bwssytems/ha-bridge).

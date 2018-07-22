@@ -1,4 +1,4 @@
-# Node-RED Hass.io Add-On
+# Node-RED Hass.io Add-On (Deprecated)
 ---------
 
 [Hass.io](https://home-assistant.io/hassio/) add-on for [Node-RED](https://nodered.org/).

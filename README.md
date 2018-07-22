@@ -3,9 +3,9 @@
 
 My repository for [Hass.io](https://home-assistant.io/hassio/) add-ons.
 
-* [Node-RED](https://github.com/notoriousbdg/hassio-addons/tree/master/node-red)
-* [HA Bridge](https://github.com/notoriousbdg/hassio-addons/tree/master/ha-bridge)
-* [Gogs](https://github.com/notoriousbdg/hassio-addons/tree/master/gogs)
+* [Node-RED (Deprecated)](https://github.com/notoriousbdg/hassio-addons/tree/master/node-red)
+* [HA Bridge (Deprecated)](https://github.com/notoriousbdg/hassio-addons/tree/master/ha-bridge)
+* [Gogs (Deprecated)](https://github.com/notoriousbdg/hassio-addons/tree/master/gogs)
 
 ## Installation
 

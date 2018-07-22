@@ -1,5 +1,5 @@
 {
-  "name": "HA Bridge",
+  "name": "HA Bridge (Deprecated)",
   "version": "4.5.6p3",
   "slug": "ha-bridge",
   "description": "HA Bridge - Hue Emulator (https://github.com/bwssytems/ha-bridge)",
