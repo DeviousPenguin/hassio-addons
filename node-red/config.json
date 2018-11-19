@@ -37,9 +37,7 @@
     ],
     "projects": false,
     "install_packages": [],
-    "install_nodes": [
-      "node-red-contrib-home-assistant"
-    ],
+    "install_nodes": [],
     "uninstall_nodes": []
   },
   "schema": {
