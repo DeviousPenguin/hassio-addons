@@ -3,8 +3,8 @@ FROM $BUILD_FROM
 
 WORKDIR /usr/src/node-red
 
-# USER root
-# ENV LANG C.UTF-8
+USER root
+ENV LANG C.UTF-8
 # RUN apt-get update && \
 #     apt-get install -y jq && \
 #     rm -rf /var/lib/apt/lists/* && \
