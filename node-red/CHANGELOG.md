@@ -1,5 +1,9 @@
 ## Changelog
 
+### 0.1.13 (2018-11-19)
+
+Using later base image with latest Node V8 and Node RED, based on Debian
+
 ### 0.1.12 (2018-05-27)
 #### Added
 - Added install_packages config option to allow installation of additional packages via apt-get
